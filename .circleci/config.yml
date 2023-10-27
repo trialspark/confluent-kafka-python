@@ -185,7 +185,7 @@ executor-environment: &executor-environment
     CC: clang
     CXX: clang++
 
-machine-image: &machine-image ubuntu-2004:current
+machine-image: &machine-image ubuntu-1804:current
 
 executors:
   amd64:
@@ -330,7 +330,7 @@ jobs:
             set -eux
 
             export LD_LIBRARY_PATH="$HOME/project/root/<< parameters.architecture >>/lib"
-            python -m auditwheel repair --plat "manylinux_2_31_$(uname -m)" "$HOME"/project/wheelhouse/dist/*.whl
+            python -m auditwheel repair --plat "manylinux_2_28_$(uname -m)" "$HOME"/project/wheelhouse/dist/*.whl
             rm -r "$HOME"/project/wheelhouse/dist
       - persist_to_workspace:
           root: .
